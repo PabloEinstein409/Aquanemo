@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.1",
+    "sqlite3": "^5.1.7",
+    "upper-case": "^2.0.2",
+    "uppercase": "^2.0.0-beta.23"
+  }
+}
