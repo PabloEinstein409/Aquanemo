@@ -8,14 +8,14 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public','index.html' ));
+  res.sendFile(path.join(__dirname,'inicio.html' ));
 });
 
-app.get('/formulario.html', (req, res) => {
+/*app.get('/formulario.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'public','formulario.html' ));
-});
+});*/
 
-app.post('/registra-usuario', (req, res) => {
+/*app.post('/registra-usuario', (req, res) => {
   const {nome, email, senha, conf_senha} = req.body;
   // Aqui começa a validação dos campos do formulário
   let erro = "";
@@ -261,7 +261,7 @@ app.post('/excluir', (req, res) => {
     console.log('Fechou a conexão com o banco de dados!');
   });
 });
-
+*/
 //Abrindo/Iniciando o Servidor
 
 app.listen(8080, () => {
