@@ -1,8 +1,7 @@
-//const form = document.getElementById('form_inscricao');
+const form = document.getElementById('formzin');
 const nome = document.getElementById('nome');
 const email = document.getElementById('email');
 const senha = document.getElementById('senha');
-const conf_senha = document.getElementById('conf_senha');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -10,12 +9,11 @@ form.addEventListener('submit', async (e) => {
     const formData = {
         nome: nome.value,
         email: email.value,
-        senha: senha.value,
-        conf_senha: conf_senha.value
+        senha: senha.value
     };
 
     try{
-        const response = await fetch('/registra-usuario', {
+        const response = await fetch('/registro-usuario', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -29,7 +27,6 @@ form.addEventListener('submit', async (e) => {
             nome.value = '';
             email.value= '';
             senha.value = '';
-            conf_senha.value = '';
         }
     } catch (error){
         console.log('Error: ', error);
