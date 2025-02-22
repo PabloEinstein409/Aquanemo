@@ -1,7 +1,6 @@
-const form = document.getElementById('formzin');
+const form = document.getElementById('formzinho');
 const nome = document.getElementById('nome');
 const email = document.getElementById('email');
-const senha = document.getElementById('senha');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -9,11 +8,11 @@ form.addEventListener('submit', async (e) => {
     const formData = {
         nome: nome.value,
         email: email.value,
-        senha: senha.value
+        id: valor
     };
 
     try{
-        const response = await fetch('/registro-usuario', {
+        const response = await fetch('/edita-usuario', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -26,7 +25,6 @@ form.addEventListener('submit', async (e) => {
         if(result.status != 'failed'){
             nome.value = '';
             email.value= '';
-            senha.value = '';
         }
     } catch (error){
         console.log('Error: ', error);

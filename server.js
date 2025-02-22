@@ -8,18 +8,14 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname,'inicio.html' ));
+  res.sendFile(path.join(__dirname,'public/inicio.html' ));
 });
 
 app.get('/login.html', (req, res) => {
-  res.sendFile(path.join(__dirname,'login.html' ));
+  res.sendFile(path.join(__dirname,'public/login.html' ));
 });
 
-app.get('/registro', (req, res) => {
-  res.sendFile(path.join(__dirname,'login.html' ));
-});
-
-app.post('/registro-usuario', (req, res) => {
+app.post('/registro', (req, res) => {
   const {nome, email, senha} = req.body;
   // Aqui começa a validação dos campos do formulário
   let erro = "";
@@ -81,7 +77,7 @@ app.post('/registro-usuario', (req, res) => {
   }
 });
 
-/*app.post('/edita-usuario', (req, res) => {
+app.post('/edita-usuario', (req, res) => {
   const {nome, email, id} = req.body;
   // Aqui começa a validação dos campos do formulário
   let erro = "";
@@ -96,18 +92,18 @@ app.post('/registro-usuario', (req, res) => {
   }
   else{
       // aqui começa o código para inserir o registro no banco de dados
-      let db = new sqlite3.Database('./db/banco.db', (err) => {
+      let db = new sqlite3.Database('./banco/banquin.db', (err) => {
           if (err) {
               return console.error(err.message);
           }
               console.log('Conectou no banco de dados!');
       });
 
-      db.get('SELECT * FROM usuario WHERE email = ?', [email], async (error, result) => {
+      db.get('SELECT * FROM aquatica WHERE email = ?', [email], async (error, result) => {
         if(error){
               console.log(error)
           }
-          else if(result && result.id_usuario != id) {
+          else if(result && result.id != id) {
               db.close((err) => {
                   if (err) {
                   return console.error(err.message);
@@ -119,7 +115,7 @@ app.post('/registro-usuario', (req, res) => {
                   message: 'Este e-mail já está em uso!',
               });
           } else{
-              db.run('UPDATE usuario SET nome = ?, email = ? WHERE id_usuario = ?', [nome, email, id], (error2) => {
+              db.run('UPDATE aquatica SET nome = ?, email = ? WHERE id = ?', [nome, email, id], (error2) => {
                   if(error2) {
                       console.log(error2)
                   } else {
@@ -141,7 +137,7 @@ app.post('/registro-usuario', (req, res) => {
   }
 });
     
-app.get('/ver_usuarios', (req, res) => {
+/*app.get('/ver_usuarios', (req, res) => {
   res.sendFile(path.join(__dirname, 'public','consulta_usuarios.html' ));
 });
 
@@ -200,18 +196,18 @@ app.post('/procurar', (req, res) => {
     }
     console.log('Fechou a conexão com o banco de dados!');
   });
-});
+});*/
 
 app.post('/procurarId', (req, res) => {
   const {id} = req.body;
-  let db = new sqlite3.Database('./db/banco.db', (err) => {
+  let db = new sqlite3.Database('./banco/banquin.db', (err) => {
     if (err) {
       return console.error(err.message);
     }
     console.log('Conectou com o banco de dados!');
   });
 
-  db.get(`SELECT * FROM usuario WHERE id_usuario = ?`, [id], (err, row) => {
+  db.get(`SELECT * FROM aquatica WHERE id = ?`, [id], (err, row) => {
     if (err) {
       return console.error(err.message);
     }
@@ -234,7 +230,7 @@ app.post('/procurarId', (req, res) => {
 
 // Criando Excluir
 
-app.post('/excluir', (req, res) => {
+/*app.post('/excluir', (req, res) => {
   const {id} = req.body;
   let db = new sqlite3.Database('./db/banco.db', (err) => {
     if (err) {
