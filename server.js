@@ -137,19 +137,19 @@ app.post('/edita-usuario', (req, res) => {
   }
 });
     
-/*app.get('/ver_usuarios', (req, res) => {
+app.get('/ver_usuarios', (req, res) => {
   res.sendFile(path.join(__dirname, 'public','consulta_usuarios.html' ));
 });
 
 app.post('/buscar-usuarios', (req, res) => {
-  let db = new sqlite3.Database('./db/banco.db', (err) => {
+  let db = new sqlite3.Database('./banco/banquin.db', (err) => {
     if (err) {
       return console.error(err.message);
     }
     console.log('Conectou com o banco de dados!');
   });
 
-  db.all(`SELECT * FROM usuario`, [], (err, rows) => {
+  db.all(`SELECT * FROM aquatica`, [], (err, rows) => {
     if (err) {
       return console.error(err.message);
     }
@@ -171,14 +171,14 @@ app.post('/buscar-usuarios', (req, res) => {
 
 app.post('/procurar', (req, res) => {
   const {nome} = req.body;
-  let db = new sqlite3.Database('./db/banco.db', (err) => {
+  let db = new sqlite3.Database('./banco/banquin.db', (err) => {
     if (err) {
       return console.error(err.message);
     }
     console.log('Conectou com o banco de dados!');
   });
 
-  db.all(`SELECT * FROM usuario WHERE nome = ?`, [nome], (err, rows) => {
+  db.all(`SELECT * FROM aquatica WHERE nome = ?`, [nome], (err, rows) => {
     if (err) {
       return console.error(err.message);
     }
@@ -196,7 +196,7 @@ app.post('/procurar', (req, res) => {
     }
     console.log('Fechou a conexão com o banco de dados!');
   });
-});*/
+});
 
 app.post('/procurarId', (req, res) => {
   const {id} = req.body;
@@ -230,16 +230,16 @@ app.post('/procurarId', (req, res) => {
 
 // Criando Excluir
 
-/*app.post('/excluir', (req, res) => {
+app.post('/excluir', (req, res) => {
   const {id} = req.body;
-  let db = new sqlite3.Database('./db/banco.db', (err) => {
+  let db = new sqlite3.Database('./banco/banquin.db', (err) => {
     if (err) {
       return console.error(err.message);
     }
     console.log('Conectou com o banco de dados!');
   });
 
-  db.all(`DELETE FROM usuario WHERE id_usuario = ?`, [id], (err, rows) => {
+  db.all(`DELETE FROM aquatica WHERE id = ?`, [id], (err, rows) => {
     if (err) {
       return console.error(err.message);
     }
@@ -258,7 +258,7 @@ app.post('/procurarId', (req, res) => {
     console.log('Fechou a conexão com o banco de dados!');
   });
 });
-*/
+
 //Abrindo/Iniciando o Servidor
 
 app.listen(8080, () => {
