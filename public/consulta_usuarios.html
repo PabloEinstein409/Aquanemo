@@ -65,8 +65,8 @@
                     dados+="<tr>";
                     dados+="<td>"+row.nome+"</td>";
                     dados+="<td>"+row.email+"</td>";
-                    dados+="<td><button type='button' onclick='editar("+row.id_usuario+")'>Editar</button></td>";
-                    dados+="<td><button type='button' onclick='excluirUser("+row.id_usuario+")'>Excluir</button></td>";
+                    dados+="<td><button type='button' onclick='editar("+row.id+")'>Editar</button></td>";
+                    dados+="<td><button type='button' onclick='excluirUser("+row.id+")'>Excluir</button></td>";
                     dados+="</tr>";
                 });
                 dados += "</table>";
@@ -102,20 +102,22 @@
                     dados+="<tr>";
                     dados+="<td>"+row.nome+"</td>";
                     dados+="<td>"+row.email+"</td>";
-                    dados+="<td><button type='button' onclick='editar("+row.id_usuario+")'>Editar</button></td>";
-                    dados+="<td><button type='button' onclick='excluirUser("+row.id_usuario+")'>Excluir</button></td>";
+                    dados+="<td><button type='button' onclick='editar("+row.id+")'>Editar</button></td>";
+                    dados+="<td><button type='button' onclick='excluirUser("+row.id+")'>Excluir</button></td>";
                     dados+="</tr>";
                 });
                 dados += "</table>";
-                carregar_usuarios(result.message);
+                document.getElementById('tabela').innerHTML += dados;
             } catch (error){
                 console.log('Error: ', error);
             }
-
         };
-        async function excluirUser(id) {
+        function editar(id){
+            window.location.href = "edit.html?id="+id;
+        }
+        async function excluir(id){
             const formData = {
-                id: id
+                id: id_usuario
             };
             try{
                 const response = await fetch('./excluir', {
@@ -127,15 +129,11 @@
                 });
 
                 const result = await response.json();
-                
-                document.getElementById('tabela').innerHTML += result.message;
+                carregar_usuarios(result.message);
 
             } catch (error){
-            console.log('Error: ', error);
+                console.log('Error: ', error);
             }
-        };
-        function editar(id){
-            window.location.href = "editar.html?id="+id;
         }
     </script>
     <!-- Latest compiled JavaScript -->

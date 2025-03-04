@@ -185,7 +185,7 @@ app.post('/procurar', (req, res) => {
 
     return res.status(200).json({
       status: 'success',
-      message: 'Dados buscados com sucesso!',
+      message: 'Dado buscado com sucesso!',
       usuarios: rows
     });
   });
