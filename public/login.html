@@ -35,6 +35,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <h1>Aquanemo</h1>
+        <div class="container-fluid">
         <form id="formzin" action="registro">
             <div class="mb-3 mt-3">
               <label for="nome" class="form-label">Nome:</label>
@@ -52,7 +53,8 @@
           </form><br>
           <form action="ver_usuarios">
             <input type="submit" value="Usuários" class="btn btn-primary" />
-        </form>        
+        </form>
+      </div>        
           <p id="message"></p>
           <style>
             body{
@@ -79,6 +81,9 @@
               color: white;
               font-family: cursive;
               font-size: 25px;
+            }
+            .form-control{
+              width: 300px;
             }
             
         </style>

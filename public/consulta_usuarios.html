@@ -23,7 +23,7 @@
                 <a class="nav-link" href="catalog.html">Catálogo</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href=".html">Blog</a>
+                <a class="nav-link" href="blog.html">Blog</a>
               </li>
                 <li class="nav-item">
                 <a class="nav-link" href="login.html">Login</a>
@@ -66,7 +66,7 @@
                     dados+="<td>"+row.nome+"</td>";
                     dados+="<td>"+row.email+"</td>";
                     dados+="<td><button type='button' onclick='editar("+row.id+")'>Editar</button></td>";
-                    dados+="<td><button type='button' onclick='excluirUser("+row.id+")'>Excluir</button></td>";
+                    dados+="<td><button type='button' onclick='excluir("+row.id+")'>Excluir</button></td>";
                     dados+="</tr>";
                 });
                 dados += "</table>";
@@ -103,7 +103,7 @@
                     dados+="<td>"+row.nome+"</td>";
                     dados+="<td>"+row.email+"</td>";
                     dados+="<td><button type='button' onclick='editar("+row.id+")'>Editar</button></td>";
-                    dados+="<td><button type='button' onclick='excluirUser("+row.id+")'>Excluir</button></td>";
+                    dados+="<td><button type='button' onclick='excluir("+row.id+")'>Excluir</button></td>";
                     dados+="</tr>";
                 });
                 dados += "</table>";
@@ -117,7 +117,7 @@
         }
         async function excluir(id){
             const formData = {
-                id: id_usuario
+                id: id
             };
             try{
                 const response = await fetch('./excluir', {
